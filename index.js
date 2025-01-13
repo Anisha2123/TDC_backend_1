@@ -29,6 +29,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
+
 // Add this before your routes
 app.use((req, res, next) => {
     console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
@@ -1416,7 +1417,9 @@ app.get('/api/test-twilio', async (req, res) => {
     });
   }
 });
-
+app.get('/', (req, res) => {
+  res.send('Backend is running successfully!');
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
