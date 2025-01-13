@@ -21,6 +21,10 @@ const auth = require('./middleware/auth');
 const { API_URL } = require('./config/config');
 
 const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Backend is running successfully!');
+});
 app.use(cors({
   origin: process.env.CLIENT_URL,
   credentials: true,
@@ -1417,9 +1421,9 @@ app.get('/api/test-twilio', async (req, res) => {
     });
   }
 });
-app.get('/', (req, res) => {
-  res.send('Backend is running successfully!');
-});
+app.get('/favicon.ico', (req, res) => res.status(204));
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
